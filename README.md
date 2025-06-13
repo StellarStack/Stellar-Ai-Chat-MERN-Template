@@ -37,7 +37,7 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
 1. Clone the template:
 
    ```bash
-   git clone https://github.com/StellarStackLtd/ai-chat-template.git
+   git clone https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template.git
    ```
 
 2. Navigate to the server directory:
@@ -132,12 +132,12 @@ docker-compose -f docker-compose.yaml up
 
 ## Documentation
 
-For detailed documentation, visit our [Wiki](https://github.com/StellarStackLtd/ai-chat-template/wiki).
+For detailed documentation, visit our [Wiki](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/wiki).
 
 ## Support
 
-- Documentation: [Wiki](https://github.com/StellarStackLtd/ai-chat-template/wiki)
-- Issues: [GitHub Issues](https://github.com/StellarStackLtd/ai-chat-template/issues)
+- Documentation: [Wiki](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/wiki)
+- Issues: [GitHub Issues](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/issues)
 - Email: support@stellarstackltd.com
 
 ## License

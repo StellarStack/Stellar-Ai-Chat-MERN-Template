@@ -37,7 +37,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/StellarStackLtd/ai-chat-template.git
+   git clone https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template.git
    ```
 
 2. Install dependencies:
@@ -85,7 +85,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
 
 ## Getting Help
 
-- Check the [Wiki](https://github.com/StellarStackLtd/ai-chat-template/wiki)
+- Check the [Wiki](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/wiki)
 - Open an issue for questions
 - Contact support@stellarstackltd.com
 

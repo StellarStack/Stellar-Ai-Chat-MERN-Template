@@ -47,7 +47,7 @@ Gemini AI Web App may use cookies, including those related to location tracking,
 
 ## Disclaimer
 
-Refer to the [Disclaimer](https://github.com/shuvra-matrix/Gemini-Ai--MERN/blob/main/DISCLAIMER.md) for additional information on the terms and conditions of using Gemini AI Web App.
+Refer to the [Disclaimer](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/blob/main/DISCLAIMER.md) for additional information on the terms and conditions of using Gemini AI Web App.
 
 ## Changes to Terms
 

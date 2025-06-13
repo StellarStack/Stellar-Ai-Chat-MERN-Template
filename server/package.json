@@ -30,7 +30,7 @@
   "description": "Backend API for StellarStack AI Chat Template - A production-ready MERN stack template for AI-powered chat applications",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StellarStackLtd/ai-chat-template.git"
+    "url": "https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template.git"
   },
   "keywords": [
     "ai",
