@@ -1,0 +1,8 @@
+application:
+    name: "stellar-ai-chat-mern-template"
+    pods:
+        - name: web
+          image: node:18-alpine
+          path: /
+          servicePorts:
+            - 8080
