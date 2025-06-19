@@ -30,7 +30,7 @@ jobs:
 
     - name: Install Client Dependencies
       run: |
-        cd public
+        cd client-fe
         npm ci
 
     - name: Run Server Tests
@@ -42,7 +42,7 @@ jobs:
 
     - name: Run Client Tests
       run: |
-        cd public
+        cd client-fe
         npm test
       env:
         CI: true
@@ -50,7 +50,7 @@ jobs:
     - name: Run Linting
       run: |
         cd server && npm run lint
-        cd ../public && npm run lint
+        cd ../client-fe && npm run lint
 
   build:
     needs: test
@@ -68,7 +68,7 @@ jobs:
 
     - name: Build Client
       run: |
-        cd public
+        cd client-fe
         npm ci
         npm run build
 

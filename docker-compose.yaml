@@ -4,12 +4,12 @@ services:
     image: gemini-client-image:latest
     container_name: gemini-client-container
     build:
-      context: ./public
+      context: ./client-fe
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     env_file:
-      - ./public/.env
+      - ./client-fe/.env
     depends_on:
       - server
     networks:
@@ -17,11 +17,11 @@ services:
 
     develop:
       watch:
-        - path: ./public/package.json
+        - path: ./client-fe/package.json
           action: rebuild
-        - path: ./public/package-lock.json
+        - path: ./client-fe/package-lock.json
           action: rebuild
-        - path: ./public
+        - path: ./client-fe
           target: /app
           action: sync
 

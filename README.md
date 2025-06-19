@@ -84,7 +84,7 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
 1. Navigate to the public directory:
 
    ```bash
-   cd ../public
+   cd ../client-fe
    ```
 
 2. Install dependencies:

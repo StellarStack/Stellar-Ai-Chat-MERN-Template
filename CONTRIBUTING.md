@@ -47,7 +47,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
    npm install
 
    # Client
-   cd ../public
+   cd ../client-fe
    npm install
    ```
 
@@ -60,7 +60,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
    npm run dev
 
    # Client
-   cd ../public
+   cd ../client-fe
    npm start
    ```
 
