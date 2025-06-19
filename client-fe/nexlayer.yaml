@@ -1,8 +1,8 @@
 application:
-    name: "public"
+    name: "client-fe"
     pods:
         - name: frontend
-          image: node:18-alpine
+          image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:frontend-latest
           path: /
           servicePorts:
             - 3000

@@ -1,41 +1,39 @@
 application:
-    name: "stellar-ai-chat-mern-template"
-    pods:
-        - name: web
-          image: nimra6/public-ai-chat:latest
-          path: /
-          servicePorts:
-            - 3030
-          vars:
-           MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store" # Service discovery
-      # 🚀 Frontend built with React (port 80 via nginx) — publicly accessible
-        - name: react
-          image: nimra6/server-chat-ai:latest
-          path: "/" # Root path for public access
-          servicePorts:
-            - 3000 # Main service port
-          vars:
-            EXPRESS_URL: "http://express.pod:3000" # Service discovery
+  name: "stellar-ai-chat-mern-template"
+  annotations:
+    ai.nexlayer.io/enabled: "true"
+    ai.nexlayer.io/model: gemini-pro
+    ai.nexlayer.io/provider: Google
 
-        # # 🔌 Backend API built with Node.js (port 3000) — connects to database
-        # - name: node
-        #   image: "nexlayerplatform/mevn-express-todo:v0.01"
-        #   servicePorts:
-        #     - 3000 # Main service port
-        #   vars:
-        #     MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store" # Service discovery
+  pods:
+    # 🔌 Backend API (Node.js + Express)
+    - name: express
+      image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:backend-latest
+      path: /
+      servicePorts:
+        - 3030
+      vars:
+        MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store"
 
-        # 🗄️ MongoDB database (port 27017) with 1Gi persistent volume
-        - name: mongodb
-          image: "nexlayerplatform/mongo:latest" # Public image — Nexlayer pulls this from Docker Hub
-          servicePorts:
-            - 27017 # Main service port
-          vars:
-            MONGO_INITDB_ROOT_USERNAME: "admin"
-            MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
-            MONGO_INITDB_DATABASE: "store"
-          volumes: # Persistent storage for your data
-            - name: "mongo-data"
-              size: "1Gi" # Storage capacity
-              mountPath: "/data/db" # Data persistence path
+    # 🚀 Frontend (React App)
+    - name: react
+      image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:frontend-latest
+      path: /
+      servicePorts:
+        - 3000
+      vars:
+        EXPRESS_URL: "http://express.pod:3030"
 
+    # 🗄️ MongoDB (Data Layer)
+    - name: mongodb
+      image: "nexlayerplatform/mongo:latest"
+      servicePorts:
+        - 27017
+      vars:
+        MONGO_INITDB_ROOT_USERNAME: "admin"
+        MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
+        MONGO_INITDB_DATABASE: "store"
+      volumes:
+        - name: "mongo-data"
+          size: "1Gi"
+          mountPath: "/data/db"
