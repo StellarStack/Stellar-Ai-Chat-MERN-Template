@@ -24,26 +24,22 @@ jobs:
         cache: 'npm'
 
     - name: Install Server Dependencies
-      run: |
-        cd server
-        npm ci
+      working-directory: ./server
+      run: npm ci
 
     - name: Install Client Dependencies
-      run: |
-        cd client-fe
-        npm ci
+      working-directory: ./client-fe
+      run: npm ci
 
     - name: Run Server Tests
-      run: |
-        cd server
-        npm test
+      working-directory: ./server
+      run: npm test
       env:
         CI: true
 
     - name: Run Client Tests
-      run: |
-        cd client-fe
-        npm test
+      working-directory: ./client-fe
+      run: npm test
       env:
         CI: true
 
@@ -67,14 +63,14 @@ jobs:
         cache: 'npm'
 
     - name: Build Client
+      working-directory: ./client-fe
       run: |
-        cd client-fe
         npm ci
         npm run build
 
     - name: Build Server
+      working-directory: ./server
       run: |
-        cd server
         npm ci
         npm run build
 
