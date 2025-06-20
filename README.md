@@ -165,31 +165,39 @@ Create github PAT with package-write rights
 
 Create github PAT with package-read rights
 
+```bash
 docker login ghcr.io -u <github-username> -p <PAT-GithubWritePriviliges>
+   ```
 
-cd <repo-dir>
+ ```bash
+   cd <repo-dir>
+   ```
 
+```bash
 docker build -t stellar-gemini-ai-chatapp-backend:v0.1    -f ./server/Dockerfile ./server
+ ```
 
-docker build -t stellar-gemini-ai-chatapp-moongodb:v0.1 -f ./server/Dockerfile ./server
-
+```bash
 docker tag stellar-gemini-ai-chatapp-backend:v0.1    ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
+ ```
 
-docker tag htvtl-postgresdb:v0.1 ghcr.io/stellarstack/htvtl-postgresdb:v0.1
-
+```bash
 docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
+ ```
 
-docker push ghcr.io/stellarstack/stellar-Gemini-ai-chatapp-postgresdb:v0.1
-
-
+```bash
 docker build -t stellar-gemini-ai-chatapp-frontend:v0.1    -f ./client-fe/Dockerfile ./client-fe
+ ```
 
+```bash
 docker tag stellar-gemini-ai-chatapp-frontend:v0.1    ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
+ ```
 
+ ```bash
 docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
+ ```
 ---
 
-Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com)
 
-
+Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com) For [Nexlayer](https://nexlayer.com)
 
