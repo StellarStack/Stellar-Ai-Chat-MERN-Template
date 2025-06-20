@@ -4,11 +4,6 @@ application:
     registry: ghcr.io
     username: stellarstack
     personalAccessToken: ghp_aadeeedaQqqquwqhrhergggguqherh
-  annotations:
-    ai.nexlayer.io/enabled: "true"
-    ai.nexlayer.io/model: gemini-pro
-    ai.nexlayer.io/provider: Google
-
   pods:
     # 🔌 Backend API (Node.js + Express)
     - name: express
