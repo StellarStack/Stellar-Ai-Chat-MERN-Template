@@ -7,12 +7,16 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  test-server:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
+
+    defaults:
+      run:
+        working-directory: ./server
 
     steps:
     - uses: actions/checkout@v3
@@ -24,37 +28,76 @@ jobs:
         cache: 'npm'
 
     - name: Install Server Dependencies
-      working-directory: ./server
-      run: npm ci
-
-    - name: Install Client Dependencies
-      working-directory: ./client-fe
       run: npm ci
 
     - name: Run Server Tests
-      working-directory: ./server
-      run: npm test
-      env:
-        CI: true
-
-    - name: Run Client Tests
-      working-directory: ./client-fe
       run: npm test
       env:
         CI: true
 
     - name: Run Linting (Server)
-      working-directory: ./server
       run: npm run lint
+
+  test-client:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    defaults:
+      run:
+        working-directory: ./client-fe
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install Client Dependencies
+      run: npm ci
+
+    - name: Run Client Tests
+      run: npm test
+      env:
+        CI: true
 
     - name: Run Linting (Client)
-      working-directory: ./client-fe
       run: npm run lint
 
-  build:
-    needs: test
+  build-server:
+    needs: test-server
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./server
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Build Server
+      run: |
+        npm ci
+        npm run build
+        
+  build-client:
+    needs: test-server
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./client-fe
 
     steps:
     - uses: actions/checkout@v3
@@ -66,13 +109,6 @@ jobs:
         cache: 'npm'
 
     - name: Build Client
-      working-directory: ./client-fe
-      run: |
-        npm ci
-        npm run build
-
-    - name: Build Server
-      working-directory: ./server
       run: |
         npm ci
         npm run build
