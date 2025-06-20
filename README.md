@@ -167,7 +167,9 @@ Create github PAT with package-read rights
 
 docker login ghcr.io -u <github-username> -p <PAT-GithubWritePriviliges>
 
-cd **<repo-dir>**
+ ```bash
+   cd <repo-dir>
+   ```
 
 docker build -t stellar-gemini-ai-chatapp-backend:v0.1    -f ./server/Dockerfile ./server
 
