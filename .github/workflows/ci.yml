@@ -87,6 +87,7 @@ jobs:
       with:
         node-version: '18.x'
         cache: 'npm'
+        cache-dependency-path: ./server/package-lock.json
 
     - name: Build Server
       run: |
@@ -109,6 +110,7 @@ jobs:
       with:
         node-version: '18.x'
         cache: 'npm'
+        cache-dependency-path: ./client-fe/package-lock.json
 
     - name: Build Client
       run: |
