@@ -165,7 +165,9 @@ Create github PAT with package-write rights
 
 Create github PAT with package-read rights
 
+```bash
 docker login ghcr.io -u <github-username> -p <PAT-GithubWritePriviliges>
+   ```
 
  ```bash
    cd <repo-dir>
