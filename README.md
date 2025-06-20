@@ -171,16 +171,9 @@ cd <repo-dir>
 
 docker build -t stellar-gemini-ai-chatapp-backend:v0.1    -f ./server/Dockerfile ./server
 
-docker build -t stellar-gemini-ai-chatapp-moongodb:v0.1 -f ./server/Dockerfile ./server
-
 docker tag stellar-gemini-ai-chatapp-backend:v0.1    ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
 
-docker tag htvtl-postgresdb:v0.1 ghcr.io/stellarstack/htvtl-postgresdb:v0.1
-
 docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
-
-docker push ghcr.io/stellarstack/stellar-Gemini-ai-chatapp-postgresdb:v0.1
-
 
 docker build -t stellar-gemini-ai-chatapp-frontend:v0.1    -f ./client-fe/Dockerfile ./client-fe
 
@@ -189,4 +182,4 @@ docker tag stellar-gemini-ai-chatapp-frontend:v0.1    ghcr.io/stellarstack/stell
 docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
 ---
 
-Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com)
+Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com) For [Nexlayer](https://nexlayer.com)
