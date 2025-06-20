@@ -3,7 +3,7 @@ application:
   registryLogin:
     registry: ghcr.io
     username: stellarstack
-    personalAccessToken: ghp_aadeeedaQqqquwqhrheruqherh
+    personalAccessToken: ghp_aadeeedaQqqquwqhrhergggguqherh
   annotations:
     ai.nexlayer.io/enabled: "true"
     ai.nexlayer.io/model: gemini-pro
