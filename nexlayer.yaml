@@ -12,7 +12,7 @@ application:
   pods:
     # 🔌 Backend API (Node.js + Express)
     - name: express
-      image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:backend-latest
+      image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
       path: /
       servicePorts:
         - 3030
@@ -21,7 +21,7 @@ application:
 
     # 🚀 Frontend (React App)
     - name: react
-      image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:frontend-latest
+      image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
       path: /
       servicePorts:
         - 3000
