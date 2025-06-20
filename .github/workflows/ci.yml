@@ -86,7 +86,7 @@ jobs:
     - name: Build Server
       run: |
         npm ci
-        npm run build
+        npm run start
         
   build-client:
     needs: test-server
