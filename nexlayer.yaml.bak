@@ -1,0 +1,41 @@
+application:
+    name: "stellar-ai-chat-mern-template"
+    pods:
+        - name: web
+          image:  "nexlayerplatform/mevn-express-todo:v0.01"
+          path: /
+          servicePorts:
+            - 3030
+          vars:
+           MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store" # Service discovery
+      # 🚀 Frontend built with React (port 80 via nginx) — publicly accessible
+        - name: react
+          image: nimra6/server-chat-ai:latest
+          path: "/" # Root path for public access
+          servicePorts:
+            - 3000 # Main service port
+          vars:
+            EXPRESS_URL: "http://express.pod:3000" # Service discovery
+
+        # # 🔌 Backend API built with Node.js (port 3000) — connects to database
+        # - name: node
+        #   image: "nexlayerplatform/mevn-express-todo:v0.01"
+        #   servicePorts:
+        #     - 3000 # Main service port
+        #   vars:
+        #     MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store" # Service discovery
+
+        # 🗄️ MongoDB database (port 27017) with 1Gi persistent volume
+        - name: mongodb
+          image: "nexlayerplatform/mongo:latest" # Public image — Nexlayer pulls this from Docker Hub
+          servicePorts:
+            - 27017 # Main service port
+          vars:
+            MONGO_INITDB_ROOT_USERNAME: "admin"
+            MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
+            MONGO_INITDB_DATABASE: "store"
+          volumes: # Persistent storage for your data
+            - name: "mongo-data"
+              size: "1Gi" # Storage capacity
+              mountPath: "/data/db" # Data persistence path
+

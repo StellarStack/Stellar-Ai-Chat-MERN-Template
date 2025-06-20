@@ -1,0 +1,43 @@
+application:
+  name: "stellar-ai-chat-mern-template"
+  registryLogin:
+    registry: ghcr.io
+    username: stellarstack
+    personalAccessToken: ghp_aadeeedaQqqquwqhrheruqherh
+  annotations:
+    ai.nexlayer.io/enabled: "true"
+    ai.nexlayer.io/model: gemini-pro
+    ai.nexlayer.io/provider: Google
+
+  pods:
+    # 🔌 Backend API (Node.js + Express)
+    - name: express
+      image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:backend-latest
+      path: /
+      servicePorts:
+        - 3030
+      vars:
+        MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store"
+
+    # 🚀 Frontend (React App)
+    - name: react
+      image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:frontend-latest
+      path: /
+      servicePorts:
+        - 3000
+      vars:
+        EXPRESS_URL: "http://express.pod:3030"
+
+    # 🗄️ MongoDB (Data Layer)
+    - name: mongodb
+      image: nexlayerplatform/mongo:latest
+      servicePorts:
+        - 27017
+      vars:
+        MONGO_INITDB_ROOT_USERNAME: "admin"
+        MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
+        MONGO_INITDB_DATABASE: "store"
+      volumes:
+        - name: "mongo-data"
+          size: "1Gi"
+          mountPath: "/data/db"

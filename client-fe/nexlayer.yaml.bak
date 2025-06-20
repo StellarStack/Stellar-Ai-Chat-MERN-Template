@@ -1,0 +1,8 @@
+application:
+    name: "public"
+    pods:
+        - name: frontend
+          image: node:18-alpine
+          path: /
+          servicePorts:
+            - 3000

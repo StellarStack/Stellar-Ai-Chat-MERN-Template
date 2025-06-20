@@ -1,0 +1,12 @@
+application:
+    name: "server"
+    annotations:
+        ai.nexlayer.io/enabled: "true"
+        ai.nexlayer.io/model: gemini-pro
+        ai.nexlayer.io/provider: Google
+    pods:
+        - name: web
+          image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:backend-latest
+          path: /
+          servicePorts:
+            - 8080

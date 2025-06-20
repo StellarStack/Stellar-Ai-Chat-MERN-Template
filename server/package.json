@@ -1,0 +1,44 @@
+{
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.3",
+    "nodemailer": "^6.9.10",
+    "request-ip": "^3.3.0"
+  },
+  "name": "@stellarstackltd/ai-chat-api",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "author": "StellarStackLtd",
+  "license": "MIT",
+  "description": "Backend API for StellarStack AI Chat Template - A production-ready MERN stack template for AI-powered chat applications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template.git"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "mern",
+    "template",
+    "stellarstack",
+    "gemini",
+    "api"
+  ]
+}

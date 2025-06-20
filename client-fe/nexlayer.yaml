@@ -1,0 +1,8 @@
+application:
+    name: "client-fe"
+    pods:
+        - name: frontend
+          image: <% REGISTRY %>/stellarstack/stellarstack-gemini-ai-chatapp-template:frontend-latest
+          path: /
+          servicePorts:
+            - 3000
