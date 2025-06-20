@@ -18,6 +18,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {
+    "@babel/cli": "^7.27.2",
     "nodemon": "^3.0.3"
   },
   "scripts": {
