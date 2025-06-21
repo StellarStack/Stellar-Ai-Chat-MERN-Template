@@ -11,7 +11,7 @@ application:
         MONGO_USER: "admin"
         MONGO_PASS: "T9m!eR7q@vX2$zLp"
         GEMINI_API_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
-        CLIENT_API_KEY: "8u73dhsj29fhd93kdj29"
+        CLIENT_API_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
         GEO_API_KEY: "b8f1629240ce45a992c6faf6b2278e18"
         LOCATION_API_KEY: "AIzaSyD_Zt3gaym8WRoiCxj0OpRJ-xvYMaxjeo8"
         GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
