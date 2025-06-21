@@ -36,7 +36,7 @@ application:
         REACT_APP_GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
         REACT_APP_GOOGLE_CLIENT_SECRET: "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"
         REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: "<% URL %>/auth/google/callback"
-        REACT_APP_SERVER_ENDPOINT: "http://express.pod:3030"
+        REACT_APP_SERVER_ENDPOINT: "https://express.pod:3030"
 
     # 🗄️ MongoDB (Data Layer)
     - name: mongodb
