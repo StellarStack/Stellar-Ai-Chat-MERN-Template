@@ -58,7 +58,7 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
    MONGO_USER=your_mongodb_username
    MONGO_PASS=your_mongodb_password
    GEMINI_API_KEY=your_gemini_api_key
-   CLIENT_API_KEY=your_client_verify_api_key
+   CLIENT_API_KEY=CLIENT_API_KEY=server_client_verify_api_key(generate by user)
    GEO_API_KEY=your_ipgeolocation_api_key
    LOCATION_API_KEY=your_geocode_api_key
    GOOGLE_CLIENT_ID=your_google_oauth_client_id
