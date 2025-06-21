@@ -60,7 +60,7 @@ export var postGemini = /*#__PURE__*/function () {
           if (previousChat.length > 0) history = [].concat(_toConsumableArray(history), _toConsumableArray(previousChat));
           genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
           model = genAi.getGenerativeModel({
-            model: "gemini-pro"
+            model: "gemini-1.5-pro"
           });
           chats = model.startChat({
             history: history
