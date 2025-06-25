@@ -32,21 +32,17 @@ export var getGeminiHome = function getGeminiHome(req, res, next) {
 var b = 0;
 export var postGemini = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(req, res, next) {
-    var clientApikey, serverSideClientApiKey, error, query, previousChat, chatHistoryId, history, genAi, model, chats, text, newChatHistoryId, chatId;
+    var clientApikey, serverSideClientApiKey, query, previousChat, chatHistoryId, history, genAi, model, chats, text, newChatHistoryId, chatId;
     return _regenerator().w(function (_context) {
       while (1) switch (_context.n) {
         case 0:
           clientApikey = String(req.headers["x-api-key"]);
-          serverSideClientApiKey = String(process.env.CLIENT_API_KEY);
-          if (!(clientApikey !== serverSideClientApiKey)) {
-            _context.n = 1;
-            break;
-          }
-          error = new Error("Invalid Api Key");
-          error.statusCode = 401;
-          error.data = "Invalid Api Key";
-          return _context.a(2, next(error));
-        case 1:
+          serverSideClientApiKey = String(process.env.CLIENT_API_KEY); // if (clientApikey !== serverSideClientApiKey) {
+          //   const error = new Error("Invalid Api Key");
+          //   error.statusCode = 401;
+          //   error.data = "Invalid Api Key";
+          //   return next(error);
+          // }
           query = String(req.body.userInput);
           previousChat = req.body.previousChat;
           chatHistoryId = req.body.chatHistoryId;
@@ -60,7 +56,7 @@ export var postGemini = /*#__PURE__*/function () {
           if (previousChat.length > 0) history = [].concat(_toConsumableArray(history), _toConsumableArray(previousChat));
           genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
           model = genAi.getGenerativeModel({
-            model: "gemini-1.5-pro"
+            model: "gemini-1.5-flash"
           });
           chats = model.startChat({
             history: history
@@ -70,9 +66,9 @@ export var postGemini = /*#__PURE__*/function () {
           }).then(function (response) {
             text = response.text();
             if (text.length < 5) {
-              var _error = new Error("result not found");
-              _error.statusCode = 403;
-              throw _error;
+              var error = new Error("result not found");
+              error.statusCode = 403;
+              throw error;
             }
             if (chatHistoryId.length < 5) {
               var newChatHistory = new chatHistory({
@@ -85,9 +81,9 @@ export var postGemini = /*#__PURE__*/function () {
             }
           }).then(function (chatHistory) {
             if (!chatHistory) {
-              var _error2 = new Error("Chat History not found");
-              _error2.statusCode = 403;
-              throw _error2;
+              var error = new Error("Chat History not found");
+              error.statusCode = 403;
+              throw error;
             }
             newChatHistoryId = chatHistory._id;
             if (chatHistoryId.length < 5) {
@@ -107,9 +103,9 @@ export var postGemini = /*#__PURE__*/function () {
                 chatHistory: chatHistory._id
               }).then(function (chatData) {
                 if (!chatData) {
-                  var _error3 = new Error("no chat found");
-                  _error3.statusCode = 403;
-                  throw _error3;
+                  var _error = new Error("no chat found");
+                  _error.statusCode = 403;
+                  throw _error;
                 }
                 chatData.messages.push({
                   sender: req.user._id,
@@ -129,9 +125,9 @@ export var postGemini = /*#__PURE__*/function () {
             if (chatHistoryId.length < 5) {
               return chatHistory.findById(newChatHistoryId).then(function (chatHistory) {
                 if (!chatHistory) {
-                  var _error4 = new Error("Chat History not found");
-                  _error4.statusCode = 403;
-                  throw _error4;
+                  var error = new Error("Chat History not found");
+                  error.statusCode = 403;
+                  throw error;
                 }
                 chatHistory.chat = chatId;
                 return chatHistory.save();
@@ -146,9 +142,9 @@ export var postGemini = /*#__PURE__*/function () {
             return user.findById(req.user._id);
           }).then(function (userData) {
             if (!userData) {
-              var _error5 = new Error("No user found");
-              _error5.statusCode = 403;
-              throw _error5;
+              var error = new Error("No user found");
+              error.statusCode = 403;
+              throw error;
             }
             if (chatHistoryId.length < 5) {
               userData.chatHistory.push(newChatHistoryId);
@@ -174,7 +170,7 @@ export var postGemini = /*#__PURE__*/function () {
             }
             next(err);
           });
-        case 2:
+        case 1:
           return _context.a(2);
       }
     }, _callee);
