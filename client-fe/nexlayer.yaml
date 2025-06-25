@@ -2,7 +2,7 @@ application:
     name: "client-fe"
     pods:
         - name: frontend
-          image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:frontend-latest
+          image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
           path: /
           servicePorts:
             - 3000

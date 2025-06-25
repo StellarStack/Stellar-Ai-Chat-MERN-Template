@@ -1,0 +1,95 @@
+name: Build and Deploy to Nexlayer
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual triggering
+
+env:
+  BACKEND_IMAGE_NAME: stellar-gemini-ai-chatapp-backend
+  FRONTEND_IMAGE_NAME: stellar-gemini-ai-chatapp-frontend
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN_RW }}
+
+      # Backend Docker image build
+      - name: Extract backend metadata for Docker
+        id: backendMeta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/stellarstack/${{ env.BACKEND_IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=,format=short
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push backend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./server
+          push: true
+          platforms: linux/amd64
+          tags: ${{ steps.backendMeta.outputs.tags }}
+          labels: ${{ steps.backendMeta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Frontend Docker image build
+      - name: Extract frontend metadata for Docker
+        id: frontendMeta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/stellarstack/${{ env.FRONTEND_IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=,format=short
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client-fe
+          push: true
+          platforms: linux/amd64
+          tags: ${{ steps.frontendMeta.outputs.tags }}
+          labels: ${{ steps.frontendMeta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Update nexlayer.yaml
+        run: |
+          # Extract the short SHA
+          SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
+          
+          # Update the backend image in nexlayer.yaml
+          sed -i "s|image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1|image: ghcr.io/stellarstack/${{ env.BACKEND_IMAGE_NAME }}:$SHORT_SHA|" nexlayer.yaml
+
+          # Update the frontend image in nexlayer.yaml
+          sed -i "s|image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1|image: ghcr.io/stellarstack/${{ env.FRONTEND_IMAGE_NAME }}:$SHORT_SHA|" nexlayer.yaml
+          
+          # Display the updated file for verification
+          cat nexlayer.yaml
+
+      - name: Deploy to Nexlayer
+        run: |
+          # Deploy to Nexlayer using the API
+          curl -X POST https://app.nexlayer.io/startUserDeployment \
+            -H "Content-Type: text/x-yaml" \
+            --data-binary @nexlayer.yaml

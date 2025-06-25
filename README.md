@@ -1,4 +1,4 @@
-# StellarStack AI Chat Template
+# StellarStack Gemini AI Chat Template
 
 A production-ready MERN stack template for building AI-powered chat applications, developed by StellarStackLtd. This template provides a robust foundation for creating interactive chat experiences using Google's Gemini Pro API, featuring modern authentication, real-time chat capabilities, and scalable architecture.
 
@@ -58,7 +58,7 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
    MONGO_USER=your_mongodb_username
    MONGO_PASS=your_mongodb_password
    GEMINI_API_KEY=your_gemini_api_key
-   CLIENT_API_KEY=your_client_verify_api_key
+   CLIENT_API_KEY=CLIENT_API_KEY=server_client_verify_api_key(generate by user)
    GEO_API_KEY=your_ipgeolocation_api_key
    LOCATION_API_KEY=your_geocode_api_key
    GOOGLE_CLIENT_ID=your_google_oauth_client_id
@@ -154,6 +154,50 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - [Terms of Service](TERMS.md)
 - [Disclaimer](DISCLAIMER.md)
 
+## Dockerized Setup
+This step assumes you have cloned the repo, copied/renamed app/.env.template to app/.env
+
+cd to cloned repo dir
+docker compose --env-file app/.env up --build
+
+## Github CR Steps
+Create github PAT with package-write rights
+
+Create github PAT with package-read rights
+
+```bash
+docker login ghcr.io -u <github-username> -p <PAT-GithubWritePriviliges>
+   ```
+
+ ```bash
+   cd <repo-dir>
+   ```
+
+```bash
+docker build -t stellar-gemini-ai-chatapp-backend:v0.1    -f ./server/Dockerfile ./server
+ ```
+
+```bash
+docker tag stellar-gemini-ai-chatapp-backend:v0.1    ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
+ ```
+
+```bash
+docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
+ ```
+
+```bash
+docker build -t stellar-gemini-ai-chatapp-frontend:v0.1    -f ./client-fe/Dockerfile ./client-fe
+ ```
+
+```bash
+docker tag stellar-gemini-ai-chatapp-frontend:v0.1    ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
+ ```
+
+ ```bash
+docker push ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
+ ```
 ---
 
-Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com)
+
+
+Built with ❤️ by [StellarStackLtd](https://stellarstackltd.com) For [Nexlayer](https://nexlayer.com)

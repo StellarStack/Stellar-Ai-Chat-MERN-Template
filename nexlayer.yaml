@@ -1,38 +1,52 @@
 application:
   name: "stellar-ai-chat-mern-template"
-  annotations:
-    ai.nexlayer.io/enabled: "true"
-    ai.nexlayer.io/model: gemini-pro
-    ai.nexlayer.io/provider: Google
-
   pods:
     # 🔌 Backend API (Node.js + Express)
     - name: express
-      image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:backend-latest
-      path: /
+      image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-backend:v0.1
       servicePorts:
         - 3030
       vars:
-        MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store"
+        MONGO_URL: "mongodb+srv://stellarstack:tIgbeSEWmC81t0M0@chatai.ryvikzn.mongodb.net/?retryWrites=true&w=majority&appName=ChatAI"
+        MONGO_USER: "stellarstack"
+        MONGO_PASS: "tIgbeSEWmC81t0M0"
+        GEMINI_API_KEY: "AIzaSyAcEU_szG5LYtiuzHJCUia3RB9oGbPUFZg"
+        CLIENT_API_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
+        GEO_API_KEY: "b8f1629240ce45a992c6faf6b2278e18"
+        LOCATION_API_KEY: "AIzaSyD_Zt3gaym8WRoiCxj0OpRJ-xvYMaxjeo8"
+        GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
+        GOOGLE_CLIENT_SECRET: "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"
+        GOOGLE_OAUTH_REDIRECT_URL: "<% URL %>/auth/google/callback"
+        CLIENT_REDIRECT_URL: "<% URL %>"
+        ACCESS_TOKEN_JWT_SECRET: "s3cr3t-r@nd0m-str1ng-123"
+        REFRESH_TOKEN_JWT_SECRET: "an0th3r-s3cr3t-456"
+        ACCESS_TOKEN_EXPIRETIME: "15m"
+        REFRESH_TOKEN_EXPIRETIME: "7d"
+        APPLICATION_TYPE: "production"
+        COOKIE_DOMAIN: "<% URL %>"
 
     # 🚀 Frontend (React App)
     - name: react
-      image: amishmaqboolkhan/stellarstack-gemini-ai-chatapp-template:frontend-latest
+      image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
       path: /
       servicePorts:
         - 3000
       vars:
-        EXPRESS_URL: "http://express.pod:3030"
+        REACT_APP_GEMINI_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
+        REACT_APP_GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
+        REACT_APP_GOOGLE_CLIENT_SECRET: "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"
+        REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: "<% URL %>/auth/google/callback"
+        REACT_APP_SERVER_ENDPOINT: "http://express.pod:3030"
 
     # 🗄️ MongoDB (Data Layer)
     - name: mongodb
-      image: "nexlayerplatform/mongo:latest"
+      image: nexlayerplatform/mongo:latest
       servicePorts:
         - 27017
       vars:
-        MONGO_INITDB_ROOT_USERNAME: "admin"
-        MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
-        MONGO_INITDB_DATABASE: "store"
+        MONGO_INITDB_ROOT_USERNAME: "stellarstack"
+        MONGO_INITDB_ROOT_PASSWORD: "tIgbeSEWmC81t0M0"
+        MONGO_INITDB_DATABASE: "ChatAI"
       volumes:
         - name: "mongo-data"
           size: "1Gi"

@@ -7,13 +7,24 @@ on:
     branches: [ main ]
 
 jobs:
+<<<<<<< HEAD
   test:
+=======
+  test-server:
+>>>>>>> ae137c9599951f5087c6655d78591b77b50e6c9e
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
 
+<<<<<<< HEAD
+=======
+    defaults:
+      run:
+        working-directory: ./server
+
+>>>>>>> ae137c9599951f5087c6655d78591b77b50e6c9e
     steps:
     - uses: actions/checkout@v3
 
@@ -22,6 +33,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+<<<<<<< HEAD
 
     - name: Install Server Dependencies
       run: |
@@ -56,6 +68,54 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+=======
+        cache-dependency-path: ./server/package-lock.json
+
+    - name: Install Server Dependencies
+      run: npm ci
+
+    - name: Run Server Tests
+      run: npm test
+      env:
+        CI: true
+
+  test-client:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    defaults:
+      run:
+        working-directory: ./client-fe
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ./client-fe/package-lock.json
+
+    - name: Install Client Dependencies
+      run: npm ci
+
+    - name: Run Client Tests
+      run: npm test
+      env:
+        CI: true
+
+  build-server:
+    needs: test-server
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./server
+>>>>>>> ae137c9599951f5087c6655d78591b77b50e6c9e
 
     steps:
     - uses: actions/checkout@v3
@@ -65,6 +125,7 @@ jobs:
       with:
         node-version: '18.x'
         cache: 'npm'
+<<<<<<< HEAD
 
     - name: Build Client
       run: |
@@ -75,10 +136,43 @@ jobs:
     - name: Build Server
       run: |
         cd server
+=======
+        cache-dependency-path: ./server/package-lock.json
+
+    - name: Build Server
+      run: |
+        npm ci
+        npm run build
+        
+  build-client:
+    needs: test-server
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./client-fe
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        cache-dependency-path: ./client-fe/package-lock.json
+
+    - name: Build Client
+      run: |
+>>>>>>> ae137c9599951f5087c6655d78591b77b50e6c9e
         npm ci
         npm run build
 
     # Add deployment steps here when ready for production
     # - name: Deploy to NextLayer
     #   run: |
+<<<<<<< HEAD
     #     # Add NextLayer deployment commands here 
+=======
+    #     # Add NextLayer deployment commands here 
+>>>>>>> ae137c9599951f5087c6655d78591b77b50e6c9e
