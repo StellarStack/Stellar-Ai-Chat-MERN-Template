@@ -5,7 +5,10 @@ import "dotenv/config";
 import cros from "cors";
 
 // const MONGODB_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}mymongoinit.6md0cxy.mongodb.net/gemini?retryWrites=true&w=majority`;
-const MONGODB_URL = "mongodb://localhost:27017/"
+const MONGODB_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@chatai.ryvikzn.mongodb.net/?retryWrites=true&w=majority&appName=ChatAI`;
+// const MONGODB_URL = "mongodb://localhost:27017/"
+// mongodb+srv://stellarstack:tIgbeSEWmC81t0M0@chatai.ryvikzn.mongodb.net/?retryWrites=true&w=majority&appName=ChatAI
+
 const PORT_NO = 3030;
 
 const app = express();
