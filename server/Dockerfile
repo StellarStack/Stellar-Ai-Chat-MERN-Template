@@ -1,17 +1,17 @@
 # Build frontend
 FROM node:20.11.0 AS client-build
 WORKDIR /app/client-fe
-COPY ../client-fe/package*.json ./
+COPY client-fe/package*.json ./
 RUN npm install
-COPY ../client-fe ./
+COPY client-fe ./
 RUN npm run build
 
 # Build backend
 FROM node:20.11.0 AS server-build
 WORKDIR /app/server
-COPY package*.json ./
+COPY server/package*.json ./
 RUN npm install
-COPY . .
+COPY server ./
 
 # Copy built frontend into server build directory
 COPY --from=client-build /app/client-fe/build ./build
