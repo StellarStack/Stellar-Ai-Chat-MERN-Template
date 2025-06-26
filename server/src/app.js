@@ -28,14 +28,14 @@ app.use(cros(crosOption));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files from the React app build
-app.use(express.static(path.join(__dirname, "../../client-fe/build")));
-
 import publicRoutes from "./router/public.js";
 import authRoutes from "./router/auth.js";
 
 app.use("/gemini", publicRoutes);
 app.use(authRoutes);
+
+// Serve static files from the React app build (after API routes)
+app.use(express.static(path.join(__dirname, "../../client-fe/build")));
 
 // Catch-all handler to serve React's index.html for any non-API route
 app.get("*", (req, res) => {
