@@ -29,7 +29,7 @@ application:
     # 🚀 Frontend (React App)
     - name: react
       image: ghcr.io/stellarstack/stellar-gemini-ai-chatapp-frontend:v0.1
-      path: /
+      path: /chatapp
       servicePorts:
         - 3000
       vars:
