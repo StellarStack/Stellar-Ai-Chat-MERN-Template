@@ -1,7 +1,5 @@
 import { userAction } from "./user";
 
-const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
-
 export const userUpdateLocation = () => {
   return (dispatch) => {
     if (navigator.geolocation) {
@@ -9,7 +7,7 @@ export const userUpdateLocation = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
 
-          const url = `${SERVER_ENDPOINT}/gemini/api/updatelocation`;
+          const url = `/gemini/api/updatelocation`;
 
           fetch(url, {
             method: "PUT",

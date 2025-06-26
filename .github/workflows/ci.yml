@@ -83,11 +83,24 @@ jobs:
         cache: 'npm'
         cache-dependency-path: ./server/package-lock.json
 
+    # Build client before server
+    - name: Install Client Dependencies
+      run: npm ci
+      working-directory: ./client-fe
+
+    - name: Build Client
+      run: npm run build
+      working-directory: ./client-fe
+
+    # Now build server (which will serve the built client)
+    - name: Install Server Dependencies
+      run: npm ci
+      working-directory: ./server
+
     - name: Build Server
-      run: |
-        npm ci
-        npm run build
-        
+      run: npm run build
+      working-directory: ./server
+
   build-client:
     needs: test-server
     runs-on: ubuntu-latest
