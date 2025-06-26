@@ -2,11 +2,9 @@ import { authAction } from "./auth";
 import { userAction } from "./user";
 import { chatAction } from "./chat";
 
-const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
-
 export const loginHandler = () => {
   return (dispatch) => {
-    const url = `${SERVER_ENDPOINT}/api/auth/login`;
+    const url = `/api/auth/login`;
 
     fetch(url, {
       method: "GET",
@@ -43,7 +41,7 @@ export const loginHandler = () => {
 
 export const logoutHandler = () => {
   return (dispatch) => {
-    const url = `${SERVER_ENDPOINT}/api/auth/logout`;
+    const url = `/api/auth/logout`;
 
     fetch(url, {
       method: "GET",
@@ -79,7 +77,7 @@ export const logoutHandler = () => {
 
 export const refreshToken = () => {
   return (dispatch) => {
-    const url = `${SERVER_ENDPOINT}/api/auth/resetToken`;
+    const url = `/api/auth/resetToken`;
 
     fetch(url, {
       method: "GET",

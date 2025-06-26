@@ -31,6 +31,15 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN_RW }}
 
+      # Build client before building backend Docker image
+      - name: Install Client Dependencies
+        run: npm ci
+        working-directory: ./client-fe
+
+      - name: Build Client
+        run: npm run build
+        working-directory: ./client-fe
+
       # Backend Docker image build
       - name: Extract backend metadata for Docker
         id: backendMeta
