@@ -28,15 +28,15 @@ import publicRoutes from "./router/public.js";
 import authRoutes from "./router/auth.js";
 
 app.use("/v1/gemini", publicRoutes);
-app.use(authRoutes);
+app.use("/v1", authRoutes);
 
 // Serve static files from the React app build at /chatapp
-app.use("/chatapp", express.static(path.join(__dirname, "../../client-fe/build")));
+//app.use("/chatapp", express.static(path.join(__dirname, "../../client-fe/build")));
 
 // Catch-all handler to serve React's index.html for any non-API route under /chatapp
-app.get("/chatapp/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../client-fe/build", "index.html"));
-});
+//app.get("/chatapp/*", (req, res) => {
+//  res.sendFile(path.join(__dirname, "../../client-fe/build", "index.html"));
+//});
 
 app.use((error, req, res, next) => {
   console.log(error);

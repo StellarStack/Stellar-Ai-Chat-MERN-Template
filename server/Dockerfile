@@ -8,8 +8,8 @@ COPY package-lock.json ./
 
 RUN npm install
 
-COPY . .
+COPY ./src/. .
 
 EXPOSE 3030
 
-CMD npm run dev
+CMD ["node", "app.js"]
