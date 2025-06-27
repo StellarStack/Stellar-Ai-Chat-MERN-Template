@@ -8,9 +8,9 @@ application:
       servicePorts:
         - 3030
       vars:
-        MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store"
-        MONGO_USER: "admin"
-        MONGO_PASS: "T9m!eR7q@vX2$zLp"
+        MONGO_URL: "mongodb+srv://stellarstack:tIgbeSEWmC81t0M0@chatai.ryvikzn.mongodb.net/?retryWrites=true&w=majority&appName=ChatAI"
+        MONGO_USER: "stellarstack"
+        MONGO_PASS: "tIgbeSEWmC81t0M0"
         GEMINI_API_KEY: "AIzaSyAcEU_szG5LYtiuzHJCUia3RB9oGbPUFZg"
         CLIENT_API_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
         GEO_API_KEY: "b8f1629240ce45a992c6faf6b2278e18"
@@ -45,9 +45,9 @@ application:
       servicePorts:
         - 27017
       vars:
-        MONGO_INITDB_ROOT_USERNAME: "admin"
-        MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
-        MONGO_INITDB_DATABASE: "store"
+        MONGO_INITDB_ROOT_USERNAME: "stellarstack"
+        MONGO_INITDB_ROOT_PASSWORD: "tIgbeSEWmC81t0M0"
+        MONGO_INITDB_DATABASE: "ChatAI"
       volumes:
         - name: "mongo-data"
           size: "1Gi"
