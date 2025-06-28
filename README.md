@@ -18,7 +18,7 @@ A production-ready MERN stack template for building AI-powered chat applications
 
 ## 🚀 Quick Start: From Zero to Production in 15 Minutes
 
-Welcome! You're about to deploy your very own AI-powered chat application to the cloud. By the end of this tutorial, you'll have a live website that anyone can visit and chat with AI.
+Welcome! You're about to deploy your very own AI-powered chat application to the Nexlayer. By the end of this tutorial, you'll have a live website that anyone can visit and chat with AI.
 
 ### What You're Building
 
