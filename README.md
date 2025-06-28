@@ -82,7 +82,8 @@ project/
 ├── nexlayer.yaml       # Main deployment config
 ├── docker-compose.yml  # Local development
 └── .github/workflows/
-    └── deploy.yml      # CI/CD pipeline
+    └── build_and_deploy.yml       # CI/CD build and deploy to nexlayer pipeline
+    └── ci.yml        # CI/CD pipeline
 ```
 
 ## 🔧 Key Configuration Patterns
