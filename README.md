@@ -1,5 +1,5 @@
 # StellarStack Gemini AI Chat Template
-A production-ready MERN stack template for building AI-powered chat applications, developed with ❤️ by Team [StellarStackLtd](https://stellarstackltd.com) For [Nexlayer](https://nexlayer.com) Community. This template provides a robust foundation for creating interactive chat experiences using Google's Gemini Pro API, featuring modern authentication, real-time chat capabilities, and scalable architecture.
+A production-ready MERN stack template for building AI-powered chat applications, developed with ❤️ by Team [StellarStackLtd](https://stellarstack.co) For [Nexlayer](https://nexlayer.com) Community. This template provides a robust foundation for creating interactive chat experiences using Google's Gemini Pro API, featuring modern authentication, real-time chat capabilities, and scalable architecture.
 
 ## 📋 Table of Contents
 
@@ -511,4 +511,4 @@ This template is licensed under the MIT License - see the [LICENSE](LICENSE) fil
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
 [![Nexlayer](https://img.shields.io/badge/Deploy%20on-Nexlayer-orange.svg)](https://nexlayer.com/)
 
-**Built with ❤️ using the [StellarStackLtd](https://stellarstackltd.com) AI Chat Template**
+**Built with ❤️ using the [StellarStackLtd](https://stellarstack.co) AI Chat Template**
