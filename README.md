@@ -123,7 +123,7 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
 
 ## 🗺️ Architecture Overview
 
-![StellarStack Nexlayer Architecture](docs/architecture.png)
+![stellar-stack-mern-ai-chat-stack](https://github.com/user-attachments/assets/b415672c-e296-4ecb-a2ef-18a255c5347d)
 
 This structure shows you how Nexlayer organizes your application into distinct, manageable pieces. Each pod has its own responsibility and configuration, but they all work together as one cohesive app.
 
