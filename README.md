@@ -476,7 +476,7 @@ Now that your app is live, here are some exciting directions to explore:
 
 ## Documentation
 
-For detailed documentation, visit our [Wiki](https://github.com/StellarStack/Stellar-Ai-Chat-MERN-Template/wiki).
+For detailed documentation, visit our [Nexlayer Docs](https://docs.nexlayer.com/).
 
 ## Support
 
