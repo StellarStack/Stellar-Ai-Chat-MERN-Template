@@ -6,14 +6,16 @@ application:
           path: /
           servicePorts:
             - 3030
+          envFile: "./server/.env"
           vars:
-           MONGO_URL: "mongodb://admin:T9m!eR7q@vX2$zLp@mongodb.pod:27017/store" # Service discovery
+           MONGO_URL: "${MONGO_URL}" # Service discovery
       # 🚀 Frontend built with React (port 80 via nginx) — publicly accessible
         - name: react
           image: nimra6/server-chat-ai:latest
           path: "/" # Root path for public access
           servicePorts:
             - 3000 # Main service port
+          envFile: "./client-fe/.env"
           vars:
             EXPRESS_URL: "http://express.pod:3000" # Service discovery
 
@@ -30,9 +32,10 @@ application:
           image: "nexlayerplatform/mongo:latest" # Public image — Nexlayer pulls this from Docker Hub
           servicePorts:
             - 27017 # Main service port
+          envFile: "./server/.env"
           vars:
-            MONGO_INITDB_ROOT_USERNAME: "admin"
-            MONGO_INITDB_ROOT_PASSWORD: "T9m!eR7q@vX2$zLp"
+            MONGO_INITDB_ROOT_USERNAME: "${MONGO_USER}"
+            MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASS}"
             MONGO_INITDB_DATABASE: "store"
           volumes: # Persistent storage for your data
             - name: "mongo-data"
