@@ -7,23 +7,24 @@ application:
       path: /v1
       servicePorts:
         - 3030
+      envFile: "./server/.env"
       vars:
-        MONGO_URL: "mongodb+srv://stellarstack:tIgbeSEWmC81t0M0@chatai.ryvikzn.mongodb.net/?retryWrites=true&w=majority&appName=ChatAI"
-        MONGO_USER: "stellarstack"
-        MONGO_PASS: "tIgbeSEWmC81t0M0"
-        GEMINI_API_KEY: "AIzaSyAcEU_szG5LYtiuzHJCUia3RB9oGbPUFZg"
-        CLIENT_API_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
-        GEO_API_KEY: "b8f1629240ce45a992c6faf6b2278e18"
-        LOCATION_API_KEY: "AIzaSyD_Zt3gaym8WRoiCxj0OpRJ-xvYMaxjeo8"
-        GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
-        GOOGLE_CLIENT_SECRET: "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"
+        MONGO_URL: "${MONGO_URL}"
+        MONGO_USER: "${MONGO_USER}"
+        MONGO_PASS: "${MONGO_PASS}"
+        GEMINI_API_KEY: "${GEMINI_API_KEY}"
+        CLIENT_API_KEY: "${CLIENT_API_KEY}"
+        GEO_API_KEY: "${GEO_API_KEY}"
+        LOCATION_API_KEY: "${LOCATION_API_KEY}"
+        GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID}"
+        GOOGLE_CLIENT_SECRET: "${GOOGLE_CLIENT_SECRET}"
         GOOGLE_OAUTH_REDIRECT_URL: "<% URL %>/auth/google/callback"
         CLIENT_REDIRECT_URL: "<% URL %>"
-        ACCESS_TOKEN_JWT_SECRET: "s3cr3t-r@nd0m-str1ng-123"
-        REFRESH_TOKEN_JWT_SECRET: "an0th3r-s3cr3t-456"
-        ACCESS_TOKEN_EXPIRETIME: "15m"
-        REFRESH_TOKEN_EXPIRETIME: "7d"
-        APPLICATION_TYPE: "production"
+        ACCESS_TOKEN_JWT_SECRET: "${ACCESS_TOKEN_JWT_SECRET}"
+        REFRESH_TOKEN_JWT_SECRET: "${REFRESH_TOKEN_JWT_SECRET}"
+        ACCESS_TOKEN_EXPIRETIME: "${ACCESS_TOKEN_EXPIRETIME}"
+        REFRESH_TOKEN_EXPIRETIME: "${REFRESH_TOKEN_EXPIRETIME}"
+        APPLICATION_TYPE: "${APPLICATION_TYPE}"
         COOKIE_DOMAIN: "<% URL %>"
 
     # 🚀 Frontend (React App)
@@ -32,10 +33,11 @@ application:
       path: /
       servicePorts:
         - 3000
+      envFile: "./client-fe/.env"
       vars:
-        REACT_APP_GEMINI_KEY: "AIzaSyDokqxtMSRDry1ZEltMa4kJov03pMNO5sY"
-        REACT_APP_GOOGLE_CLIENT_ID: "1070942776095-7um66fb0m81272ajebmbdke408avf035.apps.googleusercontent.com"
-        REACT_APP_GOOGLE_CLIENT_SECRET: "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"
+        REACT_APP_GEMINI_KEY: "${REACT_APP_GEMINI_KEY}"
+        REACT_APP_GOOGLE_CLIENT_ID: "${REACT_APP_GOOGLE_CLIENT_ID}"
+        REACT_APP_GOOGLE_CLIENT_SECRET: "${REACT_APP_GOOGLE_CLIENT_SECRET}"
         REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: "<% URL %>/auth/google/callback"
         REACT_APP_SERVER_ENDPOINT: "<% URL %>/v1"
 
@@ -44,9 +46,10 @@ application:
       image: nexlayerplatform/mongo:latest
       servicePorts:
         - 27017
+      envFile: "./server/.env"
       vars:
-        MONGO_INITDB_ROOT_USERNAME: "stellarstack"
-        MONGO_INITDB_ROOT_PASSWORD: "tIgbeSEWmC81t0M0"
+        MONGO_INITDB_ROOT_USERNAME: "${MONGO_USER}"
+        MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASS}"
         MONGO_INITDB_DATABASE: "ChatAI"
       volumes:
         - name: "mongo-data"

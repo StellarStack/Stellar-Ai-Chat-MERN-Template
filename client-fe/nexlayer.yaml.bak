@@ -6,3 +6,10 @@ application:
           path: /
           servicePorts:
             - 3000
+          envFile: "./.env"
+          vars:
+            REACT_APP_GEMINI_KEY: "${REACT_APP_GEMINI_KEY}"
+            REACT_APP_GOOGLE_CLIENT_ID: "${REACT_APP_GOOGLE_CLIENT_ID}"
+            REACT_APP_GOOGLE_CLIENT_SECRET: "${REACT_APP_GOOGLE_CLIENT_SECRET}"
+            REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: "${REACT_APP_GOOGLE_OAUTH_REDIRECT_URL}"
+            REACT_APP_SERVER_ENDPOINT: "${REACT_APP_SERVER_ENDPOINT}"
