@@ -121,30 +121,14 @@ StellarStack AI Chat Template is a comprehensive solution for building AI chat a
    - Docker containerization
    - Scalable microservices architecture
 
-## 🏗️ How Your Stack Connects Automatically
+## 🗺️ Architecture Overview
 
-Your application consists of three separate services working together:
+![StellarStack Nexlayer Architecture](docs/architecture.png)
 
-### Frontend (React App)
-- What users see and interact with
-- Handles the chat interface and user login
-- Runs on port 3000
+This structure shows you how Nexlayer organizes your application into distinct, manageable pieces. Each pod has its own responsibility and configuration, but they all work together as one cohesive app.
 
-### Backend (Express Server)
-- Processes chat messages and sends them to AI
-- Handles user authentication with Google
-- Manages your database
-- Runs on port 3030
-
-### Database (MongoDB)
-- Stores user information and chat history
-- Runs on port 27017
-
-### Service Communication
-Instead of using localhost, services talk to each other using special names:
-- Frontend connects to `express.pod:3030`
-- Backend connects to `mongodb.pod:27017`
-- Nexlayer automatically handles this networking for you!
+### How Your Stack Connects Automatically
+Here's the magic of Nexlayer - all these services discover and connect to each other automatically. This diagram shows exactly how data flows through your application:
 
 ## 💻 System Requirements
 
