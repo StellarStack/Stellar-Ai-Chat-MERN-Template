@@ -1,12 +1,4 @@
 # StellarStack Gemini AI Chat Template
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-8.1.3-green.svg)](https://mongodb.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
-[![Nexlayer](https://img.shields.io/badge/Deploy%20on-Nexlayer-orange.svg)](https://nexlayer.com/)
-
 A production-ready MERN stack template for building AI-powered chat applications, developed by StellarStackLtd. This template provides a robust foundation for creating interactive chat experiences using Google's Gemini Pro API, featuring modern authentication, real-time chat capabilities, and scalable architecture.
 
 ## 📋 Table of Contents
@@ -526,5 +518,12 @@ This template is licensed under the MIT License - see the [LICENSE](LICENSE) fil
 - [Disclaimer](DISCLAIMER.md)
 
 ---
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-8.1.3-green.svg)](https://mongodb.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
+[![Nexlayer](https://img.shields.io/badge/Deploy%20on-Nexlayer-orange.svg)](https://nexlayer.com/)
 
 **Built with ❤️ using the [StellarStackLtd](https://stellarstackltd.com) AI Chat Template**
