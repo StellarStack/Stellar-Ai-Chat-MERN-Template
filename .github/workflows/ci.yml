@@ -21,6 +21,47 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Create backend .env file
+      run: |
+        echo "MONGO_USER=$MONGO_USER" > .env
+        echo "MONGO_PASS=$MONGO_PASS" >> .env
+        echo "MONGO_URL=$MONGO_URL" >> .env
+        echo "PORT=$PORT" >> .env
+        echo "CLIENT_REDIRECT_URL=$CLIENT_REDIRECT_URL" >> .env
+        echo "GEMINI_API_KEY=$GEMINI_API_KEY" >> .env
+        echo "CLIENT_API_KEY=$CLIENT_API_KEY" >> .env
+        echo "GEO_API_KEY=$GEO_API_KEY" >> .env
+        echo "LOCATION_API_KEY=$LOCATION_API_KEY" >> .env
+        echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+        echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+        echo "GOOGLE_OAUTH_REDIRECT_URL=$GOOGLE_OAUTH_REDIRECT_URL" >> .env
+        echo "ACCESS_TOKEN_JWT_SECRET=$ACCESS_TOKEN_JWT_SECRET" >> .env
+        echo "REFRESH_TOKEN_JWT_SECRET=$REFRESH_TOKEN_JWT_SECRET" >> .env
+        echo "ACCESS_TOKEN_EXPIRETIME=$ACCESS_TOKEN_EXPIRETIME" >> .env
+        echo "REFRESH_TOKEN_EXPIRETIME=$REFRESH_TOKEN_EXPIRETIME" >> .env
+        echo "APPLICATION_TYPE=$APPLICATION_TYPE" >> .env
+        echo "COOKIE_DOMAIN=$COOKIE_DOMAIN" >> .env
+      shell: bash
+      env:
+        MONGO_USER: ${{ vars.MONGO_USER }}
+        MONGO_PASS: ${{ vars.MONGO_PASS }}
+        MONGO_URL: ${{ vars.MONGO_URL }}
+        PORT: ${{ vars.PORT }}
+        CLIENT_REDIRECT_URL: ${{ vars.CLIENT_REDIRECT_URL }}
+        GEMINI_API_KEY: ${{ vars.GEMINI_API_KEY }}
+        CLIENT_API_KEY: ${{ vars.CLIENT_API_KEY }}
+        GEO_API_KEY: ${{ vars.GEO_API_KEY }}
+        LOCATION_API_KEY: ${{ vars.LOCATION_API_KEY }}
+        GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET }}
+        GOOGLE_OAUTH_REDIRECT_URL: ${{ vars.GOOGLE_OAUTH_REDIRECT_URL }}
+        ACCESS_TOKEN_JWT_SECRET: ${{ vars.ACCESS_TOKEN_JWT_SECRET }}
+        REFRESH_TOKEN_JWT_SECRET: ${{ vars.REFRESH_TOKEN_JWT_SECRET }}
+        ACCESS_TOKEN_EXPIRETIME: ${{ vars.ACCESS_TOKEN_EXPIRETIME }}
+        REFRESH_TOKEN_EXPIRETIME: ${{ vars.REFRESH_TOKEN_EXPIRETIME }}
+        APPLICATION_TYPE: ${{ vars.APPLICATION_TYPE }}
+        COOKIE_DOMAIN: ${{ vars.COOKIE_DOMAIN }}
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -50,6 +91,21 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Create client .env file
+      run: |
+        echo "REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID" > .env
+        echo "REACT_APP_GOOGLE_CLIENT_SECRET=$REACT_APP_GOOGLE_CLIENT_SECRET" >> .env
+        echo "REACT_APP_GOOGLE_OAUTH_REDIRECT_URL=$REACT_APP_GOOGLE_OAUTH_REDIRECT_URL" >> .env
+        echo "REACT_APP_SERVER_ENDPOINT=$REACT_APP_SERVER_ENDPOINT" >> .env
+        echo "REACT_APP_GEMINI_KEY=$REACT_APP_GEMINI_KEY" >> .env
+      shell: bash
+      env:
+        REACT_APP_GOOGLE_CLIENT_ID: ${{ vars.REACT_APP_GOOGLE_CLIENT_ID }}
+        REACT_APP_GOOGLE_CLIENT_SECRET: ${{ vars.REACT_APP_GOOGLE_CLIENT_SECRET }}
+        REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: ${{ vars.REACT_APP_GOOGLE_OAUTH_REDIRECT_URL }}
+        REACT_APP_SERVER_ENDPOINT: ${{ vars.REACT_APP_SERVER_ENDPOINT }}
+        REACT_APP_GEMINI_KEY: ${{ vars.REACT_APP_GEMINI_KEY }}
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -77,6 +133,47 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Create backend .env file
+      run: |
+        echo "MONGO_USER=$MONGO_USER" > .env
+        echo "MONGO_PASS=$MONGO_PASS" >> .env
+        echo "MONGO_URL=$MONGO_URL" >> .env
+        echo "PORT=$PORT" >> .env
+        echo "CLIENT_REDIRECT_URL=$CLIENT_REDIRECT_URL" >> .env
+        echo "GEMINI_API_KEY=$GEMINI_API_KEY" >> .env
+        echo "CLIENT_API_KEY=$CLIENT_API_KEY" >> .env
+        echo "GEO_API_KEY=$GEO_API_KEY" >> .env
+        echo "LOCATION_API_KEY=$LOCATION_API_KEY" >> .env
+        echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+        echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+        echo "GOOGLE_OAUTH_REDIRECT_URL=$GOOGLE_OAUTH_REDIRECT_URL" >> .env
+        echo "ACCESS_TOKEN_JWT_SECRET=$ACCESS_TOKEN_JWT_SECRET" >> .env
+        echo "REFRESH_TOKEN_JWT_SECRET=$REFRESH_TOKEN_JWT_SECRET" >> .env
+        echo "ACCESS_TOKEN_EXPIRETIME=$ACCESS_TOKEN_EXPIRETIME" >> .env
+        echo "REFRESH_TOKEN_EXPIRETIME=$REFRESH_TOKEN_EXPIRETIME" >> .env
+        echo "APPLICATION_TYPE=$APPLICATION_TYPE" >> .env
+        echo "COOKIE_DOMAIN=$COOKIE_DOMAIN" >> .env
+      shell: bash
+      env:
+        MONGO_USER: ${{ vars.MONGO_USER }}
+        MONGO_PASS: ${{ vars.MONGO_PASS }}
+        MONGO_URL: ${{ vars.MONGO_URL }}
+        PORT: ${{ vars.PORT }}
+        CLIENT_REDIRECT_URL: ${{ vars.CLIENT_REDIRECT_URL }}
+        GEMINI_API_KEY: ${{ vars.GEMINI_API_KEY }}
+        CLIENT_API_KEY: ${{ vars.CLIENT_API_KEY }}
+        GEO_API_KEY: ${{ vars.GEO_API_KEY }}
+        LOCATION_API_KEY: ${{ vars.LOCATION_API_KEY }}
+        GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET }}
+        GOOGLE_OAUTH_REDIRECT_URL: ${{ vars.GOOGLE_OAUTH_REDIRECT_URL }}
+        ACCESS_TOKEN_JWT_SECRET: ${{ vars.ACCESS_TOKEN_JWT_SECRET }}
+        REFRESH_TOKEN_JWT_SECRET: ${{ vars.REFRESH_TOKEN_JWT_SECRET }}
+        ACCESS_TOKEN_EXPIRETIME: ${{ vars.ACCESS_TOKEN_EXPIRETIME }}
+        REFRESH_TOKEN_EXPIRETIME: ${{ vars.REFRESH_TOKEN_EXPIRETIME }}
+        APPLICATION_TYPE: ${{ vars.APPLICATION_TYPE }}
+        COOKIE_DOMAIN: ${{ vars.COOKIE_DOMAIN }}
+
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
@@ -93,24 +190,26 @@ jobs:
     needs: test-server
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment: env  # 👈 Name of your GitHub environment (adjust if needed)
-    env:
-      MONGO_URL: ${{ vars.MONGO_URL }}
-      MONGO_PASS: ${{ vars.MONGO_PASS }}
-      CLIENT_API_KEY: ${{ vars.CLIENT_API_KEY }}
-      GEO_API_KEY: ${{ vars.GEO_API_KEY }}
-      GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET }}
-      GOOGLE_CLIENT_REDIRECT_URL: ${{ vars.GOOGLE_CLIENT_REDIRECT_URL }}
-      REACT_APP_SERVER_ENDPOINT: ${{ vars.REACT_APP_SERVER_ENDPOINT }}
-      # Add any other GitHub env vars here
-
     defaults:
       run:
         working-directory: ./client-fe
-
     steps:
     - uses: actions/checkout@v3
+
+    - name: Create client .env file
+      run: |
+        echo "REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID" > .env
+        echo "REACT_APP_GOOGLE_CLIENT_SECRET=$REACT_APP_GOOGLE_CLIENT_SECRET" >> .env
+        echo "REACT_APP_GOOGLE_OAUTH_REDIRECT_URL=$REACT_APP_GOOGLE_OAUTH_REDIRECT_URL" >> .env
+        echo "REACT_APP_SERVER_ENDPOINT=$REACT_APP_SERVER_ENDPOINT" >> .env
+        echo "REACT_APP_GEMINI_KEY=$REACT_APP_GEMINI_KEY" >> .env
+      shell: bash
+      env:
+        REACT_APP_GOOGLE_CLIENT_ID: ${{ vars.REACT_APP_GOOGLE_CLIENT_ID }}
+        REACT_APP_GOOGLE_CLIENT_SECRET: ${{ vars.REACT_APP_GOOGLE_CLIENT_SECRET }}
+        REACT_APP_GOOGLE_OAUTH_REDIRECT_URL: ${{ vars.REACT_APP_GOOGLE_OAUTH_REDIRECT_URL }}
+        REACT_APP_SERVER_ENDPOINT: ${{ vars.REACT_APP_SERVER_ENDPOINT }}
+        REACT_APP_GEMINI_KEY: ${{ vars.REACT_APP_GEMINI_KEY }}
 
     - name: Use Node.js
       uses: actions/setup-node@v3
@@ -123,22 +222,6 @@ jobs:
       run: |
         npm ci
         npm run build
-
-    - name: Create server .env
-      run: |
-        echo "MONGO_URL=$MONGO_URL" > ./server/.env
-        echo "MONGO_PASS=$MONGO_PASS" >> ./server/.env
-        echo "CLIENT_API_KEY=$CLIENT_API_KEY" >> ./server/.env
-        echo "GEO_API_KEY=$GEO_API_KEY" >> ./server/.env
-        echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> ./server/.env
-        echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> ./server/.env
-        echo "GOOGLE_CLIENT_REDIRECT_URL=$GOOGLE_CLIENT_REDIRECT_URL" >> ./server/.env
-
-    - name: Create client .env
-      run: |
-        echo "REACT_APP_GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" > ./client-fe/.env
-        echo "REACT_APP_GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> ./client-fe/.env
-        echo "REACT_APP_SERVER_ENDPOINT=$REACT_APP_SERVER_ENDPOINT" >> ./client-fe/.env
 
     - name: Deploy to Nexlayer
       run: nexlayer deploy
