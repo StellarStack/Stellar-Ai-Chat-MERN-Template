@@ -222,6 +222,3 @@ jobs:
       run: |
         npm ci
         npm run build
-
-    - name: Deploy to Nexlayer
-      run: nexlayer deploy
