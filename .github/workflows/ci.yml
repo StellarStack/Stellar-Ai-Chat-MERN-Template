@@ -124,9 +124,6 @@ jobs:
         npm ci
         npm run build
 
-    - name: Install Nexlayer CLI
-      run: npm install -g @nexlayer/cli
-
     - name: Create server .env
       run: |
         echo "MONGO_URL=$MONGO_URL" > ./server/.env
