@@ -69,6 +69,7 @@ jobs:
     needs: test-server
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     defaults:
       run:
         working-directory: ./server
@@ -87,11 +88,23 @@ jobs:
       run: |
         npm ci
         npm run build
-        
+
   build-client:
     needs: test-server
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment: env  # 👈 Name of your GitHub environment (adjust if needed)
+    env:
+      MONGO_URL: ${{ vars.MONGO_URL }}
+      MONGO_PASS: ${{ vars.MONGO_PASS }}
+      CLIENT_API_KEY: ${{ vars.CLIENT_API_KEY }}
+      GEO_API_KEY: ${{ vars.GEO_API_KEY }}
+      GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ vars.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_CLIENT_REDIRECT_URL: ${{ vars.GOOGLE_CLIENT_REDIRECT_URL }}
+      REACT_APP_SERVER_ENDPOINT: ${{ vars.REACT_APP_SERVER_ENDPOINT }}
+      # Add any other GitHub env vars here
+
     defaults:
       run:
         working-directory: ./client-fe
@@ -111,7 +124,24 @@ jobs:
         npm ci
         npm run build
 
-    # Add deployment steps here when ready for production
-    # - name: Deploy to NextLayer
-    #   run: |
-    #     # Add NextLayer deployment commands here 
+    - name: Install Nexlayer CLI
+      run: npm install -g @nexlayer/cli
+
+    - name: Create server .env
+      run: |
+        echo "MONGO_URL=$MONGO_URL" > ./server/.env
+        echo "MONGO_PASS=$MONGO_PASS" >> ./server/.env
+        echo "CLIENT_API_KEY=$CLIENT_API_KEY" >> ./server/.env
+        echo "GEO_API_KEY=$GEO_API_KEY" >> ./server/.env
+        echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> ./server/.env
+        echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> ./server/.env
+        echo "GOOGLE_CLIENT_REDIRECT_URL=$GOOGLE_CLIENT_REDIRECT_URL" >> ./server/.env
+
+    - name: Create client .env
+      run: |
+        echo "REACT_APP_GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" > ./client-fe/.env
+        echo "REACT_APP_GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> ./client-fe/.env
+        echo "REACT_APP_SERVER_ENDPOINT=$REACT_APP_SERVER_ENDPOINT" >> ./client-fe/.env
+
+    - name: Deploy to Nexlayer
+      run: nexlayer deploy
